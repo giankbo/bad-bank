@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import AllData from './alldata';
+import Balance from './balance';
+import Context from './context';
+import CreateAccount from './createaccount';
+import Deposit from './deposit';
+import Home from './home';
+import Login from './login';
+import NavBar from './navbar';
+import Withdraw from './withdraw';
 
-function App() {
+
+export default function Spa() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HashRouter>
+      <NavBar />
+      <Routes>
+        <Route path="/" exact component={Home} />
+        <Route path='/CreateAccount/' component={CreateAccount} />
+        <Route path='/login/' component={Login} />
+        <Route path='/deposit/' component={Deposit} />
+        <Route path='/withdraw/' component={Withdraw} />
+        <Route path='/balance/' component={Balance} />
+        <Route path='/alldata/' component={AllData} />  
+      </Routes>
+    </HashRouter>
   );
 }
-
-export default App;

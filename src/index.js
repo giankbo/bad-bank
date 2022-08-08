@@ -1,17 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import Spa from './App';
 import reportWebVitals from './reportWebVitals';
-import NavBar from './navbar';
-
-function Spa() {
-  return (
-    <>
-    <h1>Welcome to bad bank</h1>
-    <NavBar/>
-    </>
-  );
-}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
