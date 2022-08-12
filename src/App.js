@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, HashRouter, Routes } from 'react-router-dom';
+import { Route, Routes, HashRouter } from 'react-router-dom';
 import './App.css';
 import AllData from './alldata';
 import Balance from './balance';
@@ -10,8 +10,6 @@ import Home from './home';
 import Login from './login';
 import NavBar from './navbar';
 import Withdraw from './withdraw';
-
-// Routes https://reactrouter.com/docs/en/v6/components/routes
 
 export default function Spa() {
   return (
@@ -31,3 +29,5 @@ export default function Spa() {
     </HashRouter>
   );
 }
+
+// Updated version https://reactrouter.com/docs/en/v6/components/routes
