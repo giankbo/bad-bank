@@ -38,7 +38,8 @@ export default function CreateAccount() {
 
     return (
         <Card 
-        bgcolor = 'primary'
+        bgcolor = 'light'
+        txtcolor = "dark"
         header = 'Create Account'
         status = {status}
         body = {show ? (
