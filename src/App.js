@@ -1,15 +1,15 @@
 import React from 'react';
 import { Route, Routes, HashRouter } from 'react-router-dom';
-import './App.css';
 import AllData from './alldata';
 import Balance from './balance';
-import {UserContext} from './context';
+import { UserContext } from './context';
 import CreateAccount from './createaccount';
 import Deposit from './deposit';
 import Home from './home';
 import Login from './login';
 import NavBar from './navbar';
 import Withdraw from './withdraw';
+import './App.css';
 
 export default function Spa() {
   return (
