@@ -1,6 +1,6 @@
 import React from "react";
-import Card from "./context";
 import bank from "./bank.png";
+import Card from "./context";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Home() {
