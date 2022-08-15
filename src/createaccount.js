@@ -1,6 +1,8 @@
 import React from "react";
 import { UserContext } from "./context";
 import Card from "./context";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function CreateAccount() {
@@ -14,7 +16,7 @@ export default function CreateAccount() {
 
     function validate(field, label) {
         if(!field) {
-            setStatus('Error: ' + label);
+            setStatus(`Error: ${label}`);
             setTimeout(() => setStatus(''), 3000);
             return false;
         }
@@ -45,18 +47,21 @@ export default function CreateAccount() {
         status = {status}
         body = {show ? (
                     <>
-                    Name<br/>
-                    <input type='input' className="form-control" id="name" placeholder="Enter name"  value={name} onChange={e => setName(e.currentTarget.value)} /><br/>
-                    Email address<br/>
-                    <input type='input' className="form-control" id="email" placeholder="Enter email"  value={email} onChange={e => setEmail(e.currentTarget.value)} /><br/>
-                    Password<br/>
-                    <input type='password' className="form-control" id="password" placeholder="Enter password"  value={password} onChange={e => setPassword(e.currentTarget.value)} /><br/>
-                    <button type="submit" className="btn btn-light" onClick={handleCreate}>Create Account</button>
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control type="input" placeholder="Enter name" id="name" value={name} onChange={e => setName(e.currentTarget.value)} />
+                    <br />
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control type="input" placeholder="Enter email" id="email" value={email} onChange={e => setEmail(e.currentTarget.value)} />
+                    <br />
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" placeholder="Enter password" id="password" value={password} onChange={e => setPassword(e.currentTarget.value)} />
+                    <br />
+                    <Button variant="primary" type="submit" onClick={handleCreate}>Create Account</Button>
                     </>
                 ):(
                     <>
                     <h5>Success</h5>
-                    <button type="submit" className="btn btn-light" onClick={clearForm}>Add another account</button>
+                    <Button variant="primary" type="submit" onClick={clearForm}>Add another account</Button>
                     </>
                 )}
         />
