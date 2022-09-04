@@ -6,7 +6,8 @@ export default function Card(props) {
     function classes() {
         const bg = props.bgcolor ? `bg-${props.bgcolor}` : ' ';
         const txt = props.txtcolor ? `text-${props.txtcolor}` : ' text-white';
-        return  `card mb-3 ${bg} ${txt}`;
+        const align = props.align ? `text-${props.align}` : ' ';
+        return  `card mb-3 ${bg} ${txt} ${align}`;
     }
 
     return(
