@@ -30,7 +30,7 @@ export default function Login() {
         if (ctx.loggedIn.status === false) {
             MySwal.fire({
                 title: <strong>You got an error!</strong>,
-                html: `Oh! You can't login! Please verify your email or password`,
+                html: `Please verify your email or password`,
                 icon: "error",
                 confirmButtonColor: '#007bff'
             });
@@ -38,7 +38,7 @@ export default function Login() {
         }
     }
 
-    function handleLogOut() {
+    function handleLogout() {
         ctx.loggedIn.name = '';
         ctx.loggedIn.email = '';
         ctx.loggedIn.status = false;
@@ -50,27 +50,27 @@ export default function Login() {
     return (
         <Card 
         bgcolor = 'light'
-        txtcolor = "dark"
+        txtcolor = 'dark'
         header = 'Login'
         title = {loggedIn === true ? `Hi ${ctx.loggedIn.name}` : ''}
-        text = 'Welcome!'
+        text = {loggedIn === true ? 'Welcome to BadBank!' : ''}
         body = {
                 <>
                     {loggedIn === false ? (
-                    <>
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="input" placeholder="Enter email" id="email" value={email} onChange={e => setEmail(e.currentTarget.value)} />
-                    <br/>
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Enter password" id="password" value={password} onChange={e => setPassword(e.currentTarget.value)} />
-                    <br/>
-                    <Button variant="primary" type="submit" onClick={handleLogin} disabled={!email && password.length < 8 ? true : false}>Login</Button>
-                    </>
-                ):(
-                    <>
-                    <Button variant="primary" type="submit" onClick={handleLogOut}>Logout</Button>
-                    </>
-                )}
+                        <>
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control type="input" placeholder="Enter email" id="email" value={email} onChange={e => setEmail(e.currentTarget.value)} />
+                            <br/>
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password" placeholder="Enter password" id="password" value={password} onChange={e => setPassword(e.currentTarget.value)} />
+                            <br/>
+                            <Button variant="primary" type="submit" onClick={handleLogin} disabled={!email && password.length < 8 ? true : false}>Login</Button>
+                        </>
+                    ):(
+                        <>
+                            <Button variant="primary" type="submit" onClick={handleLogout}>Logout</Button>
+                        </>
+                    )}
                 </>
             }
         />
