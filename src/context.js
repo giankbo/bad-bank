@@ -2,6 +2,32 @@ import React from "react";
 
 export const UserContext = React.createContext(null);
 
+export const UserContextProvider = (props) => {
+    return (
+        <UserContext.Provider
+            value={{
+                users: [
+                    {
+                        name:'Abel', 
+                        email:'abel@mit.edu', 
+                        password:'verysecret', 
+                        balance:100
+                    },
+                ], 
+                loggedIn: {
+                    name:'', 
+                    email:'', 
+                    index:'null', 
+                    status: false
+                },
+            }}
+        >
+            {props.children}
+        </UserContext.Provider>
+    );
+};
+
+
 export default function Card(props) {
     function classes() {
         const bg = props.bgcolor ? `bg-${props.bgcolor}` : ' ';
