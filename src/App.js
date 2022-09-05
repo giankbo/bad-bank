@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, Routes, HashRouter } from 'react-router-dom';
 import AllData from './alldata';
-import Balance from './balance';
 import { UserContextProvider } from './context';
 import CreateAccount from './createaccount';
 import Deposit from './deposit';
@@ -22,7 +21,6 @@ export default function Spa() {
           <Route path='/login/' element={<Login />} />
           <Route path='/deposit/' element={<Deposit />} />
           <Route path='/withdraw/' element={<Withdraw />} />
-          <Route path='/balance/' element={<Balance />} />
           <Route path='/alldata/' element={<AllData />} />
         </Routes>
       </UserContextProvider>

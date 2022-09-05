@@ -17,7 +17,6 @@ export default function NavBar() {
                 <Nav.Link href='#/login/'>Login</Nav.Link>
                 <Nav.Link href='#/deposit/'>Deposit</Nav.Link>
                 <Nav.Link href='#/withdraw/'>Withdraw</Nav.Link>
-                <Nav.Link href='#/balance/'>Balance</Nav.Link>
                 <Nav.Link href='#/alldata/'>AllData</Nav.Link>          
               </Nav>
             </Navbar.Collapse>
