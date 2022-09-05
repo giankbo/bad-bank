@@ -63,24 +63,26 @@ export default function Deposit() {
         txtcolor = 'dark'
         align = 'center'
         header = 'Deposit'
+        title = {
+            <>
+            <strong>Balance: ${' '}
+                {ctx.loggedIn.status
+                    ? ctx.users[ctx.loggedIn.index].balance
+                    : 'Not logged in'
+                } 
+            </strong>
+            </>
+        }
         body = {
             <>
             <Stack gap={3} className="col-md-8 mx-auto">
-            <Form.Label>
-                <strong>Balance: ${' '}
-                    {ctx.loggedIn.status
-                        ? ctx.users[ctx.loggedIn.index].balance
-                        : 'Not logged in'
-                    } 
-                </strong>
-            </Form.Label>
             
             Transaction amount:
             
             <Form.Control type="text" id="amount" placeholder="Amount" value={deposit} onChange={e => setDeposit(e.currentTarget.value)} >
             </Form.Control>
             
-            <Button variant="primary" type="submit" onClick={handleDeposit} disabled={!deposit ? true: false}>Deposit</Button>
+            <Button style={{background:'#20c997', border:'none'}} type="submit" onClick={handleDeposit} disabled={!deposit ? true: false}>Deposit</Button>
             </Stack>
             </>
             }
