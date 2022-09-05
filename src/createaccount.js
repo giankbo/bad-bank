@@ -17,7 +17,7 @@ export default function CreateAccount() {
     const MySwal = withReactContent(Swal)
 
     function validate(field, label) {
-        if(!field || label === "password" && password.length < 8) {
+        if(!field || (label === "password" && password.length < 8)) {
             if(label === "password" && password && password.length < 8) {
                 MySwal.fire({
                     title: <strong>You got an error!</strong>,
