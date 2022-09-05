@@ -70,12 +70,16 @@ export default function CreateAccount() {
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" placeholder="Enter password" id="password" value={password} onChange={e => setPassword(e.currentTarget.value)} />
                         <br />
-                        <Button variant="primary" type="submit" onClick={handleCreate} disabled={!name || !email || !password ? true : false}>Create Account</Button>
+                        <div className="text-center">
+                            <Button style={{background:'#20c997', border:'none'}} type="submit" onClick={handleCreate} disabled={!name || !email || !password ? true : false}>Create Account</Button>
+                        </div>
                     </>
                 ):(
                     <>
-                        <h5>Success</h5>
-                        <Button variant="primary" type="submit" onClick={clearForm}>Add another account</Button>
+                        <div className="text-center">
+                            <h5>Success</h5>
+                            <Button style={{background:'#20c997', border:'none'}} type="submit" onClick={clearForm}>Add another account</Button>
+                        </div>
                     </>
                 )}
         />
