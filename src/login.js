@@ -3,37 +3,48 @@ import { UserContext } from "./context";
 import Card from "./context";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import 'bootstrap/dist/css/bootstrap.min.css';  
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content'; 
 
 export default function Login() {
     const {useState, useContext} = React;
-    const [show, setShow] = useState(true);
-    const [status, setStatus] = useState('');
+    const ctx = useContext(UserContext);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const ctx = useContext(UserContext);
+    const [loggedIn, setLoggedIn] = useState(ctx.loggedIn.status);
+    const MySwal = withReactContent(Swal)
 
-    function validate(field, label) {
-        if(!field) {
-            setStatus(`Error: ${label}`);
-            setTimeout(() => setStatus(''), 3000);
+    function handleLogin() {
+        ctx.users.find((user, index) => {
+            if (user.email === email && user.password === password) {
+                ctx.loggedIn.name = user.name;
+                ctx.loggedIn.email = user.email;
+                ctx.loggedIn.index = index;
+                ctx.loggedIn.status =true;
+                return setLoggedIn(true)
+            }
+            return false;
+        });
+
+        if (ctx.loggedIn.status === false) {
+            MySwal.fire({
+                title: <strong>You got an error!</strong>,
+                html: `Oh! You can't login! Please verify your email or password`,
+                icon: "error",
+                confirmButtonColor: '#007bff'
+            });
             return false;
         }
-        return true;
     }
 
-    function handleCreate() {
-        console.log(email, password);
-        if(!validate(email, 'email')) return;
-        if(!validate(password, 'password')) return;
-        ctx.users.push({email, password, balance:100});
-        setShow(false);
-    }
-
-    function clearForm() {
+    function handleLogOut() {
+        ctx.loggedIn.name = '';
+        ctx.loggedIn.email = '';
+        ctx.loggedIn.status = false;
         setEmail('');
         setPassword('');
-        setShow(true)
+        return setLoggedIn(false);
     }
 
     return (
@@ -41,23 +52,27 @@ export default function Login() {
         bgcolor = 'light'
         txtcolor = "dark"
         header = 'Login'
-        status = {status}
-        body = {show ? (
+        title = {loggedIn === true ? `Hi ${ctx.loggedIn.name}` : ''}
+        text = 'Welcome!'
+        body = {
+                <>
+                    {loggedIn === false ? (
                     <>
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="input" placeholder="Enter email" id="email" value={email} onChange={e => setEmail(e.currentTarget.value)} />
-                    <br />
+                    <br/>
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Enter password" id="password" value={password} onChange={e => setPassword(e.currentTarget.value)} />
-                    <br />
-                    <Button variant="primary" type="submit" onClick={handleCreate}>Login</Button>
+                    <br/>
+                    <Button variant="primary" type="submit" onClick={handleLogin} disabled={!email && password.length < 8 ? true : false}>Login</Button>
                     </>
                 ):(
                     <>
-                    <h5>Success</h5>
-                    <Button variant="primary" type="submit" onClick={clearForm}>Return to login</Button>
+                    <Button variant="primary" type="submit" onClick={handleLogOut}>Logout</Button>
                     </>
                 )}
+                </>
+            }
         />
     );
 }
