@@ -7,7 +7,7 @@ export default function AllData() {
     const ctx = React.useContext(UserContext)
     return (
             <>
-            <Container>
+            <Container style={{marginTop:'2rem', maxWidth: '36rem'}}>
                 <Table striped bordered hover size="sm">
                     <thead>
                         <tr>
