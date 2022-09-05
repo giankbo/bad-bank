@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes, HashRouter } from 'react-router-dom';
 import AllData from './alldata';
 import Balance from './balance';
-import { UserContext } from './context';
+import { UserContextProvider } from './context';
 import CreateAccount from './createaccount';
 import Deposit from './deposit';
 import Home from './home';
@@ -15,7 +15,7 @@ export default function Spa() {
   return (
     <HashRouter>
       <NavBar />
-      <UserContext.Provider value={{users:[{name:'abel', email:'abel.mit.edu', password:'secret', balance:100}]}}>
+      <UserContextProvider>
         <Routes>
           <Route path='/' exact element={<Home />} />
           <Route path='/CreateAccount/' element={<CreateAccount />} />
@@ -25,7 +25,7 @@ export default function Spa() {
           <Route path='/balance/' element={<Balance />} />
           <Route path='/alldata/' element={<AllData />} />
         </Routes>
-      </UserContext.Provider>
+      </UserContextProvider>
     </HashRouter>
   );
 }
