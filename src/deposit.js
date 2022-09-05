@@ -62,7 +62,7 @@ export default function Deposit() {
         bgcolor = 'light'
         txtcolor = 'dark'
         align = 'center'
-        header = 'Withdraw'
+        header = 'Deposit'
         body = {
             <>
             <Stack gap={3} className="col-md-8 mx-auto">
