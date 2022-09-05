@@ -52,8 +52,20 @@ export default function Login() {
         bgcolor = 'light'
         txtcolor = 'dark'
         header = 'Login'
-        title = {loggedIn === true ? `Hi ${ctx.loggedIn.name}` : ''}
-        text = {loggedIn === true ? 'Welcome to BadBank!' : ''}
+        title = {
+                <>
+                    <div className="text-center">
+                        {loggedIn === true ? `Hi ${ctx.loggedIn.name}` : ''}
+                    </div>
+                </>
+            }
+        text = {
+                <>
+                    <div className="text-center">{
+                    loggedIn === true ? 'Welcome to BadBank!' : ''}
+                    </div>
+                </>
+            }
         body = {
                 <>
                     {loggedIn === false ? (
@@ -64,11 +76,15 @@ export default function Login() {
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password" placeholder="Enter password" id="password" value={password} onChange={e => setPassword(e.currentTarget.value)} />
                             <br/>
-                            <Button variant="primary" type="submit" onClick={handleLogin} disabled={!email && password.length < 8 ? true : false}>Login</Button>
+                            <div className="text-center">
+                                <Button style={{background:'#20c997', border:'none'}} type="submit" onClick={handleLogin} disabled={!email && password.length < 8 ? true : false}>Login</Button>
+                            </div>
                         </>
                     ):(
                         <>
-                            <Button variant="primary" type="submit" onClick={handleLogout}>Logout</Button>
+                            <div className="text-center">
+                                <Button style={{background:'#20c997', border:'none'}} type="submit" onClick={handleLogout}>Logout</Button>
+                            </div>
                         </>
                     )}
                 </>
