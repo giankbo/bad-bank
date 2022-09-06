@@ -4,6 +4,7 @@ import AllData from './alldata';
 import { UserContextProvider } from './context';
 import CreateAccount from './createaccount';
 import Deposit from './deposit';
+import Footer from './footer';
 import Home from './home';
 import Login from './login';
 import NavBar from './navbar';
@@ -24,6 +25,7 @@ export default function Spa() {
           <Route path='/alldata/' element={<AllData />} />
         </Routes>
       </UserContextProvider>
+      <Footer />
     </HashRouter>
   );
 }
