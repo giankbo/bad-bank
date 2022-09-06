@@ -75,7 +75,7 @@ export default function Withdraw() {
         title = {
             <>
             <strong>
-                {ctx.loggedIn.status === true 
+                {ctx.loggedIn.status 
                     ? `${ctx.users[ctx.loggedIn.index].name} balance:` 
                     : ''
                 }
