@@ -74,9 +74,14 @@ export default function Withdraw() {
         header = 'Withdraw'
         title = {
             <>
-            <strong>Balance: ${' '}
+            <strong>
+                {ctx.loggedIn.status === true 
+                    ? `${ctx.users[ctx.loggedIn.index].name} balance:` 
+                    : ''
+                }
+                <br />
                 {ctx.loggedIn.status
-                    ? ctx.users[ctx.loggedIn.index].balance
+                    ? `$ ${ctx.users[ctx.loggedIn.index].balance}`
                     : 'Not logged in'
                 } 
             </strong>
