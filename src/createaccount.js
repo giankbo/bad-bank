@@ -71,7 +71,7 @@ export default function CreateAccount() {
                         <Form.Control type="password" placeholder="Enter password" id="password" value={password} onChange={e => setPassword(e.currentTarget.value)} />
                         <br />
                         <div className="text-center">
-                            <Button style={{background:'#20c997', border:'none'}} type="submit" onClick={handleCreate} disabled={!name || !email || !password ? true : false}>Create Account</Button>
+                            <Button style={{background:'#20c997', border:'none'}} type="submit" onClick={handleCreate} disabled={!name && !email && !password ? true : false}>Create Account</Button>
                         </div>
                     </>
                 ):(
