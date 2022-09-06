@@ -61,8 +61,8 @@ export default function Login() {
             }
         text = {
                 <>
-                    <div className="text-center">{
-                    loggedIn === true ? 'Welcome to BadBank!' : ''}
+                    <div className="text-center">
+                        {loggedIn === true ? 'Welcome to BadBank!' : ''}
                     </div>
                 </>
             }
